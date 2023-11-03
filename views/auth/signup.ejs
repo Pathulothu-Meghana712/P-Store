@@ -1,0 +1,131 @@
+<%- include('./../partials/header.ejs') %>
+
+<%- include('./../partials/BootNav.ejs') %>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+  ::-webkit-input-placeholder { /* chrome, safari */
+   text-align: left;
+}
+#signup
+{
+  margin-top:60px;
+}
+
+ .lname{
+  padding-right: 28px;
+ }
+ .fname{
+  padding-right: 28px;
+ }
+
+ .signup-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+ }
+
+</style>
+</head>
+
+<body>    
+
+<div>
+  <section class="">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start">
+        
+      <div class="container" id="signup">
+        <!-- <div class="row gx-lg-5 align-items-center"> -->
+            <div class="signup-section">
+                <div class="">
+                    <img src="/images/shoppingpic.svg"
+                      class="img-fluid" alt="Sample image">
+                  </div>
+
+          
+  
+          <div class="">
+            <div class="card mx-auto" style="
+            /* width: 600px; */
+            background: hsla(0, 0%, 100%, 0.8);
+            backdrop-filter: blur(300px);
+            /* margin-top: 70px; */
+            ">
+              <div class="card-body py-2 px-7 px-md-5" style="margin-top: 20px;" >
+                <form action="/signup" method="POST" class="needs-validation" novalidate>
+                  <!-- 2 column grid layout with text inputs for the first and last names -->
+                  <div class="row g-2">
+                    <div class="col-sm-6">
+                      <div class="form-outline mb-2">
+                        <label class="form-label" for="form3Example1">First name</label>
+                        <div class="fname">
+                        <input type="text" name="fName" id="form3Example1" class="form-control" class="<%= errorObj?.fName && 'formError' %>" value="<%= oldData.fName%>"/>
+                        <%- include('./../partials/errorMessage.ejs', {errorMessage : errorObj?.fName }) %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-outline mb-2">
+                        <label class="form-label" id="form3Example2" for="form3Example2">Last name</label>
+                        <div class="lname" style="padding: 0;">
+                          <input type="text" name="lName" id="form3Example2" class="form-control" class="<%= errorObj?.lName && 'formError' %>" value="<%= oldData.lName%>"/>
+                          <%- include('./../partials/errorMessage.ejs', {errorMessage : errorObj?.lName }) %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Email input -->
+                  
+                  <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example3">Email address</label>
+                    <input type="email" name="email" id="form3Example3" class="form-control" class="<%= errorObj?.email && 'formError' %>" value="<%= oldData.email %>"/>
+                    <%- include('./../partials/errorMessage.ejs', {errorMessage : errorObj?.email }) %>
+                  </div>
+  
+                  <!-- Password input -->
+                  <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example4">Password</label>
+                    <input type="password" name="password" id="form3Example4" class="form-control" class="<%= errorObj?.password && 'formError' %>" value="<%= oldData.password %>"/>
+                    <%- include('./../partials/errorMessage.ejs', {errorMessage: errorObj?.password}) %>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example4">Confirm Password</label>
+                    <input type="password" name="confirmPassword" id="form3Example4" class="form-control" class="<%= errorObj?.confirmPassword && 'formError' %>" value="<%= oldData.confirmPassword%>"/>
+                    <%- include('./../partials/errorMessage.ejs', {errorMessage: errorObj?.confirmPassword}) %>
+                  </div>
+  
+  
+                  <!-- Submit button -->
+             <div class="text-center">
+              <%- include('./../partials/errorBlock.ejs', {errorBlockMessage : errorObj?.errorBlockMessage }) %>
+              <button type="submit" class="btn btn-primary btn-block mb-3 text-center">
+                Sign up
+              </button>
+             </div>
+             
+                  <!-- Register buttons -->
+                  <div class="text-center">
+                    <p>Already have an account? <a href="/signin">Sign in</a></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+</body>
+<footer>
+    <%- include('./../partials/footer.ejs') %>

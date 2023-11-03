@@ -1,0 +1,119 @@
+<%- include('./../partials/header.ejs') %>
+<% if (isLoggedIn) { %>
+    <%- include('./../partials/BootNav_2.ejs') %>
+<% } else{ %>
+    <%- include('./../partials/BootNav.ejs') %>
+    <% } %>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+
+        <style>
+            /* Style the add to cart section */
+            .add-to-cart {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quantity-input {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                justify-content: center;
+            }
+
+            .quantity-input button {
+                background-color: #333;
+                color: #fff;
+                border: none;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            .quantity-input input {
+                width: 40px;
+                text-align: center;
+                font-size: 16px;
+                border: 1px solid #ddd;
+                margin: 0 5px;
+                padding: 5px;
+            }
+        </style>
+
+
+<div class="row">
+    <% men.forEach(product => { %>
+    <div class="Mworld">
+        <img src="<%= product.img_url %>" alt="<%= product.product_name %> Image">
+        <div class="inside">
+            
+
+            <h2>
+                <a href="./../viewProduct?p_id=<%= product._id %>" >
+                    <%= product.product_name %>
+                </a>
+            </h2>
+            <br>
+            
+            <p>Elevate your style with perfect <%= product.product_name %>  for all your needs.</p>
+            <span class="price" id="box1"> &#8377 <%= product.price %></span>
+            <br>          
+            <% if (isAdmin) { %>
+
+                <a href="./../admin/editProduct?p_id=<%= product._id %>" class="edit-button">
+    
+                  <i class="fa fa-pencil" ></i>Edit Product
+    
+              </a>
+    
+              &nbsp;
+    
+              <a href="/deleteProduct?p_id=<%= product._id %>" data-product-id="<%= product._id %>" class="remove-button">Remove Product</a>
+    
+              <% } %>
+    
+     
+              <br>
+              <br>
+          </div>
+    </div>
+  <% }); %>
+</div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+
+
+            $(document).ready(function () {
+                $('.increment, .decrement').click(function () {
+                    var quantityInput = $(this).siblings('input[type="text"]');
+                    var currentValue = parseInt(quantityInput.val(), 10);
+                    if ($(this).hasClass('increment')) {
+                        // Increment button clicked
+                        quantityInput.val(currentValue + 1);
+                    } else if ($(this).hasClass('decrement') && currentValue > 1) {
+                        // Decrement button clicked (if quantity > 1)
+                        quantityInput.val(currentValue - 1);
+                    }
+
+                    var updatedQuantity = quantityInput.val();
+                    var element = document.getElementById("addToCartLink");
+                    var dataValue = element.getAttribute("data-pid");
+
+                    // var sessionVal = document.getElementById("data-session");
+                    // var session = sessionVal.getAttribute("data-session");
+
+                    // Combine quantity and product ID into the URL
+                    var addToCartUrl = "/postCart?q=" + updatedQuantity + "&p_id=" + dataValue;
+
+                    // Set the updated URL as the href attribute of the "Add to Cart" link
+                    $('#addToCartLink').attr('href', addToCartUrl);
+                });
+
+            });
+
+
+
+        </script>
+
+
+        <%- include('./../partials/footer.ejs') %>

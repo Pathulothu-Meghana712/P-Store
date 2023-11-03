@@ -1,0 +1,274 @@
+<%- include('./partials/header.ejs') %>
+<% if (isLoggedIn) { %>
+
+    <%- include('./partials/BootNav_2.ejs') %>
+  
+  <% } else{ %>
+  
+    <%- include('./partials/BootNav.ejs') %>
+  
+    <% } %>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<style>
+    /* Overall Page Styling */
+    .image-section
+    {
+        margin-right:50px;
+    }
+    #productDescription
+    {
+        margin-top: 50px;
+    }
+
+    body { 
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+        padding-top:5%;
+    }
+
+
+
+    /* Style the add to cart section */
+    /* .add-to-cart {  
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } */
+
+    .quantity-input {
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity-input button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 8px 16px;
+        margin: 0 5px;
+    }
+
+    .quantity-input input {
+        width: 40px;
+        text-align: center;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        margin: 0 5px;
+        padding: 5px;
+    }
+
+    /* Product Image Styling */
+    .viewProductImg {
+        max-width: 100%;
+    height: auto;
+    /* Remove the border */
+    /* border: 2px solid #00a0df; */
+
+    padding: 5px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow for animation */
+
+    }
+
+    .viewProductImg:hover {
+        transform: scale(1.05); /* Zoom in the image on hover */
+    }
+
+
+    /* Price Styling */
+    .price {
+        font-size: 34px;
+        color: #000000;
+        margin: 20px 0;
+    }
+
+    
+
+    #cartButton
+    {
+        /* background-color: #005A9C; */
+        margin-top:9px;
+      
+    }
+ 
+    /* .add-to-cart button:hover {
+        background-color: #6f9bc1;
+    } */ */
+    .section_product{
+        padding: 20px;
+        margin: 20px;
+         
+    }
+
+    /* Add to Cart Button Styling */
+    .quantity-input .col-1{
+        background-color: blue;
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+        margin: 10px 0;
+    
+    }
+    .quantity-input .increment{
+        background-color: blue;
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+        margin: 10px 0;
+    
+    }
+    
+    .quantity-input .decrement{
+        background-color: blue;
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+        margin: 10px 0;
+    
+    } 
+
+     
+
+    
+     
+</style>
+</head>
+<body>
+ 
+    <div class="container-fluid"  style="padding: 30px; background-color: #fff;">
+        
+            <% product.forEach(product => { %>
+
+                <div class="row gx-1"> 
+
+
+            <div class="col image-section">
+                <div class="image">
+                    <img class="viewProductImg" src="<%= product.img_url %>" alt="<%= product.product_name %> Image">
+                </div>
+            </div>
+    
+            <div class="col" style="margin-top:50px;">
+                <div class="row title">
+                    <div class=".container-fluid product-name">
+                        <h1 style="font-size: 3rem; font-weight: 700; color: #00008B;"><%= product.product_name %></h1>
+                    </div>
+                </div>
+    
+                <div class="row .container-fluid p_ratings align-items-center" style="justify-content: space-around;">
+                    <div class="col ratings">
+                        <h5 class="col review-count">Rating</h5>
+
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+    
+                <div class="row price_details">
+                    <span class="price">₹ <%= product.price %></span>
+                </div>
+    
+                <div class="row add-to-cart">
+                   <div class="col-1" style="width: auto;"> 
+                    <a href="/postCart?q=1&p_id=<%= product._id %>" id="addToCartUrl"><button type="button" class=" btn btn-primary" id="cartButton" data-pid="<%= product._id %>">
+                        Add to Cart</button></a>
+                  </div>
+                    <div class="col quantity-input" style="padding-left: 40px;" >
+                        <button class="decrement">-</button>
+                        <input type="text" id="quantity" name="quantity" value="1">
+                        <button class="increment">+</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" id="productDescription">
+            <div class="col .container-fluid">
+                <div class="card">
+                    <h4 class="card-header">Product Details</h4>
+                    <div class="card-body" style="font-family: 'Times New Roman', Times, serif; font-size: 1rem;"> 
+                        <% product.description.split('\n').forEach(line => { %>
+                            <p style="color: black;"><%= line %></p> 
+                            <% }); %>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                       
+                    </div>
+                  </div>
+            </div>
+<!-- 
+            <div class="col product_review">
+                <div class="card">
+                    <h5 class="card-header">Customer Reviews</h5>
+                    <div class="card-body">
+                       
+                       
+                    </div>
+                  </div>
+            </div> -->
+        </div>
+            <% }); %>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+function addToCart(productId) {
+    var quantity = document.getElementById("quantity").value;
+    var addToCartUrl = "/postCart?q=" + quantity + "&p_id=" + productId;
+    window.location.href = addToCartUrl;
+}
+
+
+        $(document).ready(function () {
+            $('.increment, .decrement').click(function () {
+                var quantityInput = document.getElementById("quantity");
+                var currentValue = Number(quantityInput.value);
+                if ($(this).hasClass('increment')) {
+                    // Increment button clicked
+                    quantityInput.value = String(currentValue + 1);
+                    currentValue++;
+                } else if ($(this).hasClass('decrement') && currentValue > 1) {
+                    // Decrement button clicked (if quantity > 1)
+                    quantityInput.value = String(currentValue - 1);
+                    currentValue--;
+                }
+                const cb = document.getElementById("cartButton")
+                var dataValue = cb.getAttribute("data-pid");
+                // var sessionVal = document.getElementById("data-session");
+                // var session = sessionVal.getAttribute("data-session");
+                // Combine quantity and product ID into the URL
+                var addToCartUrl = "/postCart?q=" + currentValue + "&p_id=" + dataValue;
+                const cartURL = document.getElementById("addToCartUrl");
+                // Set the updated URL as the href attribute of the "Add to Cart" link
+                cartURL.setAttribute('href', addToCartUrl);
+            });
+        });
+    
+      </script>
+    </body>
+    <footer>
+        <%- include('./partials/footer.ejs') %>
+    </footer>
+
+ 

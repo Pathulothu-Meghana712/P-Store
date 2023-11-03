@@ -1,0 +1,145 @@
+<%- include('./../partials/header.ejs') %>
+<%- include('./../partials/BootNav.ejs') %>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+  ::-webkit-input-placeholder { /* chrome, safari */
+   text-align: left;
+}
+ /* .form-check a{
+  padding-left: 100px;
+ } */
+.signin
+{
+  margin-top:60px;
+}
+ .forgot-area{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+ }
+
+ .checkbox-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .checkbox-area > input {
+  display: inline-block;
+  margin: 0;
+  margin-right: 5px;
+ }
+
+ .signin-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+  padding: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+ }
+
+</style>
+</head>
+
+<body>    
+
+<div>
+  <section class="">
+    <!-- Jumbotron -->
+    <div class=" text-center text-lg-start">
+      <div class="container signin">
+        <div class="align-items-center signin-section">
+              <div class="">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample image">
+              </div>
+              <div class="">
+                <div class="card mx-auto" style="
+                /* width: 600px; */
+                /* text-align: center; */
+                background: hsla(0, 0%, 100%, 0.8);
+                backdrop-filter: blur(300px);
+                /* margin-top: 70px; */
+                ">
+                  <div class="card-body py-5 px-md-5">
+                    <form action="/signin" method="POST">
+                      
+      
+
+      <!-- <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div> -->
+                      <!-- Email input -->
+                      <div class="form-outline mb-4 col-15">
+                        <label class="form-label" for="form3Example3">Email address</label>
+                        <input type="email" id="email" name="email" class="form-control" class="<%= errorObj?.email && 'formError' %>" value="<%= oldData.email %>"/>
+                        <%- include('./../partials/errorMessage.ejs', {errorMessage : errorObj?.email }) %>
+                      </div>
+      
+                      <!-- Password input -->
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example4">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" class="<%= errorObj?.password && 'formError' %>" value="<%= oldData.password %>"/>
+                        <%- include('./../partials/errorMessage.ejs', {errorMessage: errorObj?.password}) %>
+                      </div>
+    <!--   
+                      <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-left: 5px;">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      </div> -->
+    <!--   
+                      <div class="d-flex mb-4">
+                      <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                      </div>
+                        <div class="form-check"> <a href="/forgotPassword">Forgot password?</a>
+                        </div>
+                      </div> -->
+
+                      <div class="forgot-area">
+                        <div class="checkbox-area">
+                          <input type="checkbox" class="form-check-input float-start" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1" style="padding-left: 2px;">Remember me</label>
+                          <!-- <button type="button" class="btn btn-secondary float-start">Example Button floated left</button> -->
+                        </div>
+                        <div> 
+                          <a class="forgot" href="/forgotPassword">Forgot password?</a>
+                        </div>
+                        <!-- <button type="button" class="btn btn-secondary float-end">Example Button floated right</button> -->
+                      </div>
+
+                      <div class="text-center">
+                      <%- include('./../partials/errorBlock.ejs', {errorBlockMessage : errorObj?.errorBlockMessage }) %>
+                      <button type="submit" class="btn btn-primary btn-block mb-4">
+                        Sign In
+                      </button>
+                    </div>
+
+                      <!-- Register buttons -->
+                      <div class="text-center">
+                        <p>Don't have an account? <a href="/signup">Signup</a></p>
+                      </div>
+                    </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+<footer>
+<%- include('./../partials/footer.ejs') %>
+
+

@@ -1,0 +1,58 @@
+<%- include('./../partials/header.ejs') %>
+<% if (isLoggedIn) { %>
+    <%- include('./../partials/BootNav_2.ejs') %>
+<% } else{ %>
+    <%- include('./../partials/BootNav.ejs') %>
+    <% } %>
+
+<br><br><br>
+
+<html>
+    <style>/* Reset some default styles */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin: 20px 0;
+        }
+        
+        #cart-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #empty-cart-message {
+            font-size: 18px;
+            color: #777;
+        }
+        
+        /* You can add more styles as needed */
+        </style>
+<head>
+    <title>Your Orders</title>
+</head>
+<body>
+    <h1>Your Orders</h1>
+    <div id="cart-content">
+        <h1>No Orders</h1>
+        <p id="empty-cart-message">There are currently no orders to display.</p>
+    </div>
+</body>
+<br>
+<br>
+<br>
+<br><br><br><br><br><br>
+<footer>
+    <%- include('./../partials/footer.ejs') %>
+

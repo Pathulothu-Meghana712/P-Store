@@ -1,0 +1,185 @@
+<style>
+    
+
+.main{
+
+    margin-top: 3rem;
+
+  }
+
+  a{
+    color: black;
+  }
+
+  .hover-effect1 {
+
+    min-height: 20px;
+
+    background: #F44336;
+
+    text-align: center;
+
+  }
+
+  .hover-effect1 ul {
+
+   padding-top: 1px;
+
+  }
+
+  .hover-effect1 ul li {
+
+   display: inline-block;
+
+  }
+
+  .hover-effect1 ul li a {
+
+   font-size: 30px;
+
+   text-align: center;
+
+   color: #fff;
+
+   margin: 0px 10px;
+
+   line-height: 50px;
+
+   display: inline-block;
+
+   width: 50px;
+
+   height: 50px;
+
+   background:#dc3545;
+
+   -webkit-transition: all .6s ease;
+
+   -moz-transition: all .6s ease;
+
+   -ms-transition: all .6s ease;
+
+   -o-transition: all .6s ease;
+
+   transition: all .6s ease;
+
+  }
+
+  .hover-effect1 ul li:hover a {
+
+    border-radius: 50%;
+
+    background: #dc3545;
+
+   -moz-transform: rotate(360deg);
+
+   -webkit-transform: rotate(360deg);
+
+   -o-transform: rotate(360deg);
+
+   -ms-transform: rotate(360deg);
+
+   transform: rotate(360deg);
+
+  }
+
+  #Footer{
+    color: white;
+  }
+
+  #Footer-body{
+    margin: auto;
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 2rem 0;
+  }
+
+  #Footer-body > div:first-child{
+    margin-right: 15rem;
+  }
+
+  /* #Footer-body .footer-title{
+
+  } */
+
+  #Footer-body a{
+    color: white;
+    text-decoration: none;
+    font-size: 0.8em;
+    display: block;
+    margin: 10px 0 10px 0;
+  }
+
+  #Footer-body p{
+    margin: 10px 0 10px 0;
+    font-weight: bold;
+  }
+
+  #footer-copyright{
+    margin: auto;
+    width: 80vw;
+    text-align: center;
+  }
+
+  #footer-copyright span{
+    box-sizing: border-box;
+    font-size: 0.6rem !important;
+    line-height: 1.125rem !important;
+    letter-spacing: 0.0625rem !important;
+    font-weight: 600 !important;
+    font-family: "Montserrat", sans-serif !important;
+    display: block;
+    padding: 1.2rem;
+  }
+
+  #footer-copyright hr{
+    margin: 0;
+  }
+
+</style>
+<footer>    
+
+ 
+
+      <!--Fontawesome-->
+
+
+          
+<link rel="stylesheet" href="/css/bootstrap.css">
+
+          <footer id="Footer" style="background-color:#192a56;">
+            <div id="Footer-body">
+                  <div>
+                    <p>Get to Know Us</p>
+                        <a href="/aboutUs">About Us</a>
+                        <a href="/sellProduct">Sell Your Products</a>
+                        <a href="/contactUs">Contact Us</a>
+                        <a href="/availableProduct">Refurbished Products</a>
+                  </div>
+                  <div>
+                    <p>Useful links</p>
+                        <a href="/faq">FAQ</a>
+                        <a href="/privacyPolicy">Privacy Policy</a>
+                        <a href="/terms">Terms</a>
+                        <% if (isLoggedIn) { %>
+                          <div class="div"><a href="/signout">Log Out</a></div>
+                          <% } else{ %>
+                              <div class="div"><a href="/signin">Login</a></div>
+                              <% } %>
+                  </div>
+            </div>
+            <div id="footer-copyright">
+            <hr>
+              <span> © 2023 P-STORE. All rights reserved.</span>
+            </div>
+          </footer>
+</footer>
+
+ 
+
+</body>
+
+ 
+
+</html>

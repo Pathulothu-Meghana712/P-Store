@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size:large;
+}
+
+*body{
+  margin: top 30px !important;
+  margin-bottom: 30px !important;
+}
+
+
+.error-message
+
+{
+
+    color: red;
+
+    padding: 5px;
+
+    font-size:small;
+
+}
+
+.error-block
+
+{
+
+    color: red;
+
+    padding: 5px;
+
+    font-size:small;
+
+}
+
+.sell-dropdown .dropdown-menu {
+  left: -60px;
+}
+.fab,
+.fa {
+    font-size: 24px;
+}
+.nav-item.active {
+  background-color: transparent !important;
+}
+.bg-steelblue
+{
+    background-color: #4682b4;
+}
+
+.top-content h1{
+    padding-top: 200px;
+    font-family: 'Lato', sans-serif;
+}
+
+.btn {
+  padding: .45rem 1.5rem .35rem;
+}
+
+/* Color of the links BEFORE scroll */
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #fff;
+}
+
+/* Color of the links AFTER scroll */
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon,
+.navbar-scrolled .navbar-brand {
+  color: #fff;
+}
+
+/* Color of the navbar AFTER scroll */
+.navbar-scroll,
+.navbar-scrolled {
+  background-color: #cbbcb1;
+}
+
+.navbar-brand {
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+}
+
+
+/* ################################# home css #######################################*/

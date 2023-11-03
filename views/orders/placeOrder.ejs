@@ -1,0 +1,44 @@
+<%- include('./../partials/header.ejs') %> 
+<%- include('./../partials/BootNav.ejs') %> 
+
+<div class="container">
+    <% for (let i = 0; i < productsArray.length; i++) { %>
+      <div class="Mworld">
+        <img src="<%= productsArray[i].img_url %>" alt="<%= productsArray[i].product_name %> Image">
+        <div class="inside">
+          <% if (isAdmin) { %>
+            <a href="./../deleteProduct?p_id=<%= productsArray[i]._id %>" class="deleteIcon" data-product-id="<%= productsArray[i]._id %>">
+              <i class="fa-solid fa-trash"></i>
+            </a>
+          <% } %>
+          <h2>
+            <a href="./../viewProduct?p_id=<%= productsArray[i]._id %>">
+              <%= productsArray[i].product_name %>
+            </a>
+          </h2>
+          <p><%= productsArray[i].description %></p>
+          <span class="price">₹ <%= productsArray[i].price %></span> X 
+          <span class="price">QUANTITY:
+            <% const cartProduct = cartObj.find(item => item.product_id === productsArray[i]._id.toString()); %>
+            <%= cartProduct ? cartProduct.quantity : 0 %>
+          </span>
+          <br>
+          <span class="price">TOTAL PRICE: ₹
+            <% const totalPrice = (productsArray[i].price * (cartProduct ? cartProduct.quantity : 0)); %>
+            <%= totalPrice %>
+          </span>
+          <br>
+          Add to Cart button or link
+          Add Edit Product link for admins
+          <% if (isAdmin) { %>
+            <a href="./../admin/editProduct?p_id=<%= productsArray[i]._id %>">
+              <i class="fa fa-pencil"></i>Edit Product
+            </a>
+          <% } %>
+          <br>
+          <br>
+        </div>
+      </div>
+    <% } %>
+  </div>
+<%- include('./../partials/footer.ejs') %> 

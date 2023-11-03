@@ -1,0 +1,342 @@
+
+<%- include('./../partials/header.ejs') %>
+
+ 
+
+<% if (isLoggedIn) { %>
+
+  <%- include('./../partials/BootNav_2.ejs') %>
+
+<% } else{ %>
+
+  <%- include('./../partials/BootNav.ejs') %>
+
+  <% } %>
+
+ 
+
+ 
+
+ 
+
+ 
+
+<link rel="stylesheet" href="/css/bootstrap.css">
+
+<head>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+
+ 
+
+  </head>
+
+ 
+
+  <style>
+
+
+
+   /* Bootstrap resets */
+
+  .card {
+
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  .card-img {
+
+    border-radius: 0;
+
+    object-fit: cover;
+
+    width: 300px !important;
+    height: 300px !important;
+
+  }
+
+ 
+
+  .vgr-cards {
+
+    .card {
+
+      display: flex;
+
+      flex-flow: wrap;
+
+      flex: 100%;
+
+      margin: 20px;
+
+ 
+
+      &:nth-child(even) .card-img-body {
+
+        order: 2;
+
+      }
+
+ 
+
+      &:nth-child(even) .card-body {
+
+        padding-left: 0;
+
+        padding-right: 1.25rem;
+
+      }
+
+     
+
+      @media (max-width: 576px) {
+
+        display: block;
+
+      }
+
+     
+
+    }
+
+ 
+
+    .card-img-body {
+
+      flex: 1;
+
+      overflow: hidden;
+
+      position: relative;
+
+     
+
+      @media (max-width: 576px) {
+
+        width: 100%;
+
+        height: 200px;
+
+        margin-top: 20px;
+            margin-bottom: 20px;
+
+      }
+
+     
+
+    }
+
+   
+
+    .card-img {
+
+      width: 200px;
+
+      height: 200px;
+
+      position: relative;
+
+      margin-left: 50%;
+
+      transform: translateX(-50%);
+
+      object-fit:contain;
+
+     
+
+      @media (max-width: 1140px) {
+
+            margin: 0;
+
+      transform: none;
+
+      width: 100%;
+
+      height: auto;
+
+      }
+
+     
+
+    }
+
+ 
+
+    .card-body {
+
+      flex: 2;
+
+      padding: 0 0 0 1.25rem;
+
+     
+
+      @media (max-width: 576px) {
+
+        padding: 0;
+
+      }
+
+     
+
+    }
+
+  }
+
+  #screenProduct {
+
+    border: 1px solid #ccc; /* Add a light gray border */
+
+    padding: 2rem 10px 2rem 10px; /* Add some padding for spacing */
+
+    margin-bottom: 1rem;
+    border-radius: 5px;
+
+  }
+
+  a{
+
+    text-decoration: none;
+
+    color: black;
+
+  }
+
+  .card-group{
+    display: flex;
+    align-items: center;
+  }
+
+ 
+
+  div.p {
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+.product-container {
+ display: grid !important;
+ grid-template-columns: 1fr 2fr 1fr !important;
+ grid-column-gap: 2rem !important; 
+}
+
+.product-image{
+  width: 100%;
+  object-fit: contain;
+  height: 40vh;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.product-title{
+    font-weight: 500;
+    font-size: 18px;
+    display: block;
+}
+
+.product-price{
+    font-size: 25px;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.btn-icon{
+  padding: 0px 5px 0px 5px !important;
+}
+
+</style>
+<div style="margin-top: 100px;">
+  <% kids.forEach(product => { %>
+    <div class="container"  id="screenProduct">
+          <div class="product-container">
+            <a href="/viewProduct?p_id=<%= product._id %>">
+              <img class="product-image" src="<%= product.img_url %>" alt="<%= product.product_name %>">
+            </a>
+            <div class="product-details-container">
+              <a href="/viewProduct?p_id=<%= product._id %>">
+                <span class="product-title"><%= product.product_name %></span>
+              </a>
+                <p class=".product-description">
+                  <%= product.description.length > 100 ? product.description.slice(0, 100) + '...' : product.description %>
+                </p>
+            </div>
+            <div class="product-price-container">
+                <span class="product-price">₹ <%= product.price %></span>
+                  <% if (isAdmin) { %>
+                    <div>
+                      <a href="/viewProduct?p_id=<%= product._id %>" class="btn btn-outline-primary btn-icon">
+                        <i class="fa-solid fa-eye fa-sm"></i>
+                      </a>
+
+                      <a href="./../admin/editProduct?p_id=<%= product._id %>" class="btn btn-outline-warning btn-icon">
+                        <i class="fa-solid fa-pencil fa-sm" ></i>
+                      </a>
+
+                      <a href="/deleteProduct?p_id=<%= product._id %>" data-product-id="<%= product._id %>" class="btn btn-outline-danger btn-icon">
+                        <i class="fa-solid fa-trash fa-sm" ></i>
+                      </a>
+                    </div>
+                <% } else {%>
+                  <div>
+                    <a href="/viewProduct?p_id=<%= product._id %>" class="btn btn-outline-primary">
+                      View
+                    </a>
+                  </div>
+                <% } %> 
+            </div>
+
+            <!-- <div class="card-img-body">
+
+              <a href="/viewProduct?p_id=<%= product._id %>">
+
+                <img class="card-img" src="<%= product.img_url %>" alt="<%= product.product_name %> Image">
+
+              </a>
+
+            </div>
+
+            <div class="card-body">
+
+              <a href="/viewProduct?p_id=<%= product._id %>">
+
+                <h4 class="card-title"><%= product.product_name %></h4>
+
+              </a>
+
+              <div class="card-text-container">
+
+                <%= product.description.length > 100 ? product.description.slice(0, 100) + '...' : product.description %>              </div>
+                <br>
+              <h6 class="card-title" >Price : ₹ <%= product.price %></h6>
+                <br>
+              <a href="/viewProduct?p_id=<%= product._id %>" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
+              &nbsp;
+
+              <% if (isAdmin) { %>
+                <a href="./../admin/editProduct?p_id=<%= product._id %>" class="btn btn-success">
+                  <i class="fa fa-pencil" ></i>Edit
+              </a>
+              &nbsp;
+              <a href="/deleteProduct?p_id=<%= product._id %>" data-product-id="<%= product._id %>" class="btn btn-danger">Remove</a>
+              <% } %>
+  
+
+            </div> -->
+
+          </div>
+    </div>
+    <% }); %>
+
+  </div>
+</div>
+
+<%- include('./../partials/footer.ejs') %>

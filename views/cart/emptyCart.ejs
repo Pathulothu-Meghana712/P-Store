@@ -1,0 +1,89 @@
+
+<%- include('./../partials/header.ejs') %>
+
+<% if (isLoggedIn) { %>
+
+    <%- include('./../partials/BootNav_2.ejs') %>
+
+<% } else{ %>
+
+    <%- include('./../partials/BootNav.ejs') %>
+
+    <% } %>
+
+ 
+
+<br><br><br>
+
+ 
+
+<html>
+
+    <style>/* Reset some default styles */
+
+        body, h1, p {
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+       
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background-color: #f4f4f4;
+            /* text-align: center; */
+        }
+        
+        #cart-content {
+
+            background-color: #fff;
+            text-align: center;
+
+            /* padding: 20px;
+            border-radius: 5px; */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #cart-content h2{
+            color: black;
+            text-align: left;
+        }
+        
+        #empty-cart-image {
+            padding-bottom: 0px;
+            padding-top: 0px;
+            text-align: center;
+            height: 60%;
+            width: 50% ;
+        }
+        
+        /* You can add more styles as needed */
+
+        </style>
+
+<head>
+
+    <title>Your Cart</title>
+
+</head>
+
+<body>
+    <div id="cart-content">
+        <!-- <h2>Your Cart Is Empty....</h2> -->
+        <!-- Check if the cart is empty and display a message accordingly -->
+        <img id="empty-cart-image" src="/images/emptyCart.png"></p>
+    </div>
+
+</body>
+
+<footer>
+
+    <%- include('./../partials/footer.ejs') %>
+
+ 
+
+ 

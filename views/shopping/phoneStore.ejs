@@ -1,0 +1,121 @@
+<%- include('./../partials/header.ejs') %> 
+<% if (isLoggedIn) { %>
+    <%- include('./../partials/BootNav_2.ejs') %>
+<% } else{ %>
+    <%- include('./../partials/BootNav.ejs') %>
+    <% } %>
+
+<link rel="stylesheet" href="/css/bootstrap.css">
+
+
+<div class="row">
+    <% phone.forEach(product => { %>
+    <div class="Mworld">
+        <img src="<%= product.img_url %>" alt="<%= product.product_name %> Image">
+        <div class="inside">
+
+            <h2>
+                <a href="./../viewProduct?p_id=<%= product._id %>" >
+                    <%= product.product_name %>
+                </a>
+            </h2>
+            <br>
+            
+
+            
+            <p>A feature-packed <%= product.product_name %> for all your needs</p>
+            <span class="price" id="box1"> &#8377 <%= product.price %></span>
+            <br>     
+            <% if (isAdmin) { %>
+
+                <a href="./../admin/editProduct?p_id=<%= product._id %>" class="edit-button">
+    
+                  <i class="fa fa-pencil" ></i>Edit Product
+    
+              </a>
+    
+              &nbsp;
+    
+              <a href="/deleteProduct?p_id=<%= product._id %>" data-product-id="<%= product._id %>" class="remove-button">Remove Product</a>
+    
+              <% } %>
+              <br>
+              <br>
+          </div>
+    </div>
+  <% }); %>
+</div>
+
+    <!-- <div class="product1">
+        <img class="img2" src="/images/samsungGalaxy.png" alt="Samsung Galaxy Phone">
+        <h2>Samsung Galaxy Phone</h2>
+        <p> 8 GB RAM | 256 GB ROM | Expandable Upto 1 TB
+            16.76 cm (6.6 inch) Full HD+ Display
+            48MP + 8MP + 5MP | 13MP Front Camera
+            5000 mAh Li-ion Battery Battery
+            Dimensity 1080, Octa Core Processor
+        </p>
+        <span class="price">Rs 32,999</span>
+        <button>Add to Cart</button>
+    </div> -->
+<!--  
+ <% phone.forEach(product => { %>
+
+    <div class="Mworld">
+   
+        <img src="<%= product.img_url %>" alt="<%= product.product_name %> Image">
+   
+       <div class="inside">
+   
+          <h2><%= product.product_name %></h2>
+   
+           <p>Price: $<%= product.price %></p>
+   
+           <p>Description: <%= product.description %></p>
+   
+           <p>Category: <%= product.category %></p>
+   
+           <br><button>Add to Cart</button>
+   
+      
+   
+   </div>
+   
+   </div>
+   
+   <% }); %> -->
+
+ <!-- <div class="Mworld">
+    <img src="/images/MI 11X.jpg" alt="MI 11x Phone" >
+    <div class="inside">
+    <h2>MI 11x Phone</h2>
+    <p>6 GB RAM | 128 GB ROM
+        16.94 cm (6.67 inch) Full HD+ Display
+        48MP + 8MP + 5MP | 20MP Front Camera
+        4520 mAh Battery
+        Qualcomm Snapdragon 870 Processor
+        Proximity Sensor, Ambient Light Sensor, Accelerometer, Gyroscope, Electronic Compass, Linear Motor,
+        IR Blaster </p>
+    <span class="price">Rs 21,955</span>
+    <br>
+    <button>Add to Cart</button>
+</div>
+</div>
+
+ <div class="Mworld">
+    <img src="/images/Samsung Galaxy A34 5G.png" alt="Samsung Galaxy Phone" >
+    <div class="inside">
+    <h2>Samsung Galaxy Phone</h2>
+    <p>8 GB RAM | 256 GB ROM | Expandable Upto 1 TB
+        16.76 cm (6.6 inch) Full HD+ Display
+        48MP + 8MP + 5MP | 13MP Front Camera
+        5000 mAh Li-ion Battery Battery
+        Dimensity 1080, Octa Core Processor
+    </p>
+    <span class="price">Rs 32,999</span>
+    <br>
+    <button>Add to Cart</button>
+    </div>
+</div> -->
+
+<%- include('./../partials/footer.ejs') %> 

@@ -1,0 +1,122 @@
+<%- include('./partials/header.ejs') %> 
+<% if (isLoggedIn) { %>
+    <%- include('./partials/BootNav_2.ejs') %>
+<% } else{ %>
+    <%- include('./partials/BootNav.ejs') %>
+    <% } %>
+
+<html>
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+</head>
+<style>
+    /* Reset some default styles */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 0;
+}
+
+header {
+    /* background-color: #333; */
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    padding-top: 30px;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+}
+
+main {
+    max-width: 70%;
+    max-height: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#profile, #orders {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: darkslateblue;
+}
+
+p {
+    margin: 5px 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+}
+
+.button#sign_out {
+    background-color: teal;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button#sign_out:hover {
+    background-color: #c9302c;
+}
+
+a{
+    color: black;
+}
+
+</style>
+
+<body>
+    <header>
+        <h1>User Profile</h1>
+    </header>
+    <main>
+        
+        <section id="profile">
+            <h1 style="color: darkblue;">Profile Information</h1>
+            <br>
+            <p><strong>User ID:</strong> <span id="user_id"><%= userDetails._id %></span></p>
+            <p><strong>Name:</strong> <span id="user_name"><%= userDetails.fName %> <%= userDetails.lName %></span></p>
+            <p><strong>Email:</strong> <span id="user_name"><%= userDetails.email %></span></p>
+
+        </section>
+        <hr>
+        <br>
+        <section id="orders">
+           <button type="submit"><a href="/getMyCart"><strong style="color: white;" >My Cart</strong></a></button> 
+           <button type="submit"><a href="/getOrders"><strong style="color: white;" >My Orders</strong></a></button>
+           <button type="submit"><a href="/myAds"><strong style="color: white;" >My Ads</strong></a></button> 
+ 
+        </section>
+
+        
+    </main>
+    <br><br>
+    <!-- <footer> -->
+        <center>
+            <a id="sign_out" href="/signout" class="button">Sign Out</a>
+        </center>      
+    <!-- </footer> -->
+</body>
+</html>

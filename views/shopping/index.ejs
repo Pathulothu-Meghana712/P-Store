@@ -1,0 +1,246 @@
+<%- include('./partials/header.ejs') %>
+
+<% if (isLoggedIn) { %>
+    <%- include('./partials/BootNav.ejs') %>
+<% } else{ %>
+    <%- include('./partials/BootNav.ejs') %>
+    <% } %>
+
+    <body>          
+        <!-- #################################################################################################### -->
+        <div class="top">
+            <div class="top-image">
+                <div class="overlay"></div>
+                <!-- <img class="mySlides" src="/images/differwear.jpg" alt=""> -->
+                <img class="mySlides" src="/images/mengroup.png" style="width: 100%;">
+        
+                <img class="mySlides" src="/images/girlgroup.png" style="width: 100%;">
+        
+                <img class="mySlides" src="/images/womenethnic.jpg" style="width: 100%;">
+        
+                <img class="mySlides" src="/images/oneplus-9pro.jpg" style="width: 100%;">
+        
+                <img class="mySlides" src="/images/laptop.png" style="width: 100%;">
+        
+                <img class="mySlides" src="/images/smarttv.png" style="width: 100%;">
+            </div>
+        
+            <div class="top-content">
+        
+               <h1>Welcome to P Store</h1></b>
+        
+                <p>Your one-stop destination for best Products.</p>
+        
+                <!-- <a href="#featured-products" class="btn">Explore Products</a> -->
+            </div> 
+        </div>
+        
+        <script>
+        
+            var myIndex = 0;
+        
+            carousel();
+        
+            function carousel() {
+        
+              var i;
+        
+              var x = document.getElementsByClassName("mySlides");
+        
+              for (i = 0; i < x.length; i++) {
+        
+                x[i].style.display = "none";
+        
+              }
+        
+              myIndex++;
+        
+              if (myIndex > x.length) {myIndex = 1}    
+        
+              x[myIndex-1].style.display = "block";  
+        
+              setTimeout(carousel, 2000); // Change image every 2 seconds
+        
+            }
+        
+            </script>
+        
+         
+        
+        <!-- ################################### Electronics Cards ######################################################### -->
+        
+        <div class="heading1">
+        
+            <h2 style="margin-left: 20px;">Electronics</h2>
+        
+        </div>
+        
+        <div class="container1">
+        
+            <div class="card1">
+        
+                <img src="/images/Lenovo_Legion_Laptop.jpg" alt="Laptop">
+        
+                <h2>Laptops</h2>
+        
+                <p> Portable productivity </p>
+        
+                <a href="/laptop">Shop Now</a>
+            </div>
+        
+           
+        
+            <div class="card1">
+        
+                <img src="/images/Oneplus_Y1S TV.png" alt="smarttv">
+        
+                <h2>Smart Tv</h2>
+        
+                <p>Binge watch? Get the latest smart tv</p>
+        
+                <a href="/tv">Shop Now</a>
+        
+            </div>
+        
+           
+        
+            <div class="card1">
+        
+                <img src="/images/oneplus (2).jpg" alt="Phone">
+        
+                <h2>Mobile phones</h2>
+        
+                <p>Communicate at your fingertips.</p>
+        
+                <a href="/phone">Shop Now</a>
+        
+            </div>
+        
+        </div>
+        
+        <!-- ################################### Clothing Cards ######################################################### -->
+        
+          <div class="heading1">
+        
+                <h2 style="margin-left: 20px;">Clothing</h2>
+        
+          </div>
+        
+        <div class="container1">
+        
+            <!-- <div class="heading1">
+        
+                <h2>Clothing</h2>
+        
+            </div> -->
+        
+           
+        
+            <div class="card1">
+        
+                <img src="/images/womenSaree.png" alt="Women">
+        
+                <h2>Women wear</h2>
+        
+                <p>Ethnic wear for a beautiful you...</p>
+        
+                <a href="/womenWorld">Shop Now</a>
+        
+            </div>
+        
+           
+        
+            <div class="card1">
+        
+                <img src="/images/t-shirt.png" alt="men">
+        
+                <h2>Men's wear</h2>
+        
+                <p>Casual for men</p>
+        
+                <a href="/mensWorld">Shop Now</a>
+        
+            </div>
+        
+           
+        
+            <div class="card1">
+        
+                <img src="/images/Girl's Wear.png" alt="Girls">
+        
+                <h2>Kids Wear</h2>
+        
+                <p>Kids fashion on..</p>
+        
+                <a href="/kidsWorld">Shop Now</a>
+            </div>
+        </div>
+        <script src="cards.js"></script>
+        
+         
+        
+        <!-- #################################################################################################### -->
+        
+         
+        
+            <!-- <div class="featured-products">
+        
+                <h2>Featured Products</h2>
+        
+                <div class="product">
+        
+                    <img src="/images/Lenovo_Legion_Laptop.jpg" alt="Lenovo Legion Laptop">
+        
+                    <h3>Lenovo Legion Laptop</h3>
+        
+                    <p> Compete with the Legion 5 Gen 6 (15, AMD).
+        
+                        Its armed with everything you need to dominate any lobby, including up to AMD Ryzen™ 7 5800H
+        
+                        mobile processors and NVIDIA® GeForce RTX™ 30 series graphics.
+        
+                        Enjoy crisp visuals on a 39.6cms (15) FHD display, featuring amazing color accuracy and Dolby
+        
+                        Vision™, while Nahimic 3D audio and the Legion Truestrike keyboard help you strike with pinpoint
+        
+                        precision.</p>
+        
+                    <span class="price">Rs 86,490</span>
+        
+                    <button>Add to Cart</button>
+        
+                </div>
+        
+         
+        
+                <div class="product">
+        
+                    <img src="/images/Samsung Galaxy A34 5G.jpg" alt="Samsung Galaxy Phone">
+        
+                    <h3>Samsung Galaxy Phone</h3>
+        
+                    <p> 8 GB RAM | 256 GB ROM | Expandable Upto 1 TB
+        
+                        16.76 cm (6.6 inch) Full HD+ Display
+        
+                        48MP + 8MP + 5MP | 13MP Front Camera
+        
+                        5000 mAh Li-ion Battery Battery
+        
+                        Dimensity 1080, Octa Core Processor
+        
+                    </p>
+        
+                    <span class="price">Rs 32,999</span>
+        
+                    <button>Add to Cart</button>
+        
+                </div> -->
+        
+                       
+        
+                   </body>
+                <footer>
+         
+        
+        <%- include('./partials/footer.ejs') %>

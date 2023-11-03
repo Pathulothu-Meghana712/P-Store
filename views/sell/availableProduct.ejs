@@ -1,0 +1,288 @@
+<%- include('./../partials/header.ejs') %>
+
+ 
+
+<% if (isLoggedIn) { %>
+
+  <%- include('./../partials/BootNav_2.ejs') %>
+
+<% } else{ %>
+
+  <%- include('./../partials/BootNav.ejs') %>
+
+  <% } %>
+
+ 
+
+ 
+
+ 
+
+ 
+
+<link rel="stylesheet" href="/css/bootstrap.css">
+
+<head>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+ 
+
+  </head>
+
+ 
+
+  <style>
+
+  body {
+
+    margin-top: 70px;
+
+  }
+
+ 
+
+   /* Bootstrap resets */
+
+  .card {
+
+    border: none;
+
+  }
+
+  .card-img {
+
+    border-radius: 0;
+
+    object-fit: cover;
+
+  }
+
+ 
+
+  .vgr-cards {
+
+    .card {
+
+      display: flex;
+
+      flex-flow: wrap;
+
+      flex: 100%;
+
+      margin-bottom: 40px;
+
+ 
+
+      &:nth-child(even) .card-img-body {
+
+        order: 2;
+
+      }
+
+ 
+
+      &:nth-child(even) .card-body {
+
+        padding-left: 0;
+
+        padding-right: 1.25rem;
+
+      }
+
+     
+
+      @media (max-width: 576px) {
+
+        display: block;
+
+      }
+
+     
+
+    }
+
+ 
+
+    .card-img-body {
+
+      flex: 1;
+
+      overflow: hidden;
+
+      position: relative;
+
+     
+
+      @media (max-width: 576px) {
+
+        width: 100%;
+
+        height: 200px;
+
+            margin-bottom: 20px;
+
+      }
+
+     
+
+    }
+
+   
+
+    .card-img {
+
+      width: 50%;
+
+      height: auto;
+
+      position: relative;
+
+      margin-left: 50%;
+
+      transform: translateX(-50%);
+
+     
+
+      @media (max-width: 1140px) {
+
+            margin: 0;
+
+      transform: none;
+
+      width: 100%;
+
+      height: auto;
+
+      }
+
+     
+
+    }
+
+ 
+
+    .card-body {
+
+      flex: 2;
+
+      padding: 0 0 0 1.25rem;
+
+     
+
+      @media (max-width: 576px) {
+
+        padding: 0;
+
+      }
+
+     
+
+    }
+
+  }
+
+  .container {
+
+    border: 1px solid #ccc; /* Add a light gray border */
+
+    padding: 10px; /* Add some padding for spacing */
+
+    margin-bottom: 20px;
+
+  }
+
+  a{
+
+    text-decoration: none;
+
+    color: black;
+
+  }
+
+  .row{
+
+    padding: 4%;
+
+  }
+
+  .product-container {
+ display: grid !important;
+ grid-template-columns: 1fr 2fr 1fr !important;
+ grid-column-gap: 2rem !important; 
+}
+
+.product-image{
+  width: 100%;
+  object-fit: contain;
+  height: 40vh;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.product-title{
+    font-weight: 500;
+    font-size: 18px;
+    display: block;
+}
+
+.product-price{
+    font-size: 25px;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+#screenProduct {
+
+border: 1px solid #ccc; /* Add a light gray border */
+
+padding: 2rem 10px 2rem 10px; /* Add some padding for spacing */
+
+margin-bottom: 1rem;
+border-radius: 5px;
+
+}
+
+ 
+
+   
+
+</style>
+
+ 
+
+  <div class="row">
+
+  <% availableProduct.forEach(product => { %>
+
+      <div class="container" id="screenProduct">
+        <div class="product-container">
+              <img class="product-image" src="<%= product.img %>" alt="<%= product.product_name %> Image"> 
+              <div class="product-details-container">           
+                <span class="product-title"><%= product.title %></span>
+                <p class="product-description"><%= product.description %></p>
+              </div>
+              <div class="product-price-container">
+              <% if (isLoggedIn) { %>
+                <span class="product-price">Price : <%= product.price %></span>
+                <div>
+                  <div>Contact : <%= product.contact %></div>
+                  <div>Area : <%= product.area %></div>  
+                </div>
+                <% } else{ %>
+
+                    <a href="/signin"><p style="color: blue;">Login For More Details</p></a>
+
+                <% } %>
+              </div>
+        </div>
+      </div>
+
+      <br>
+
+    <% }); %>
+
+  </div>
+
+ 
+
+<%- include('./../partials/footer.ejs') %>

@@ -1,0 +1,63 @@
+
+ 
+
+<%- include('./../partials/header.ejs') %>
+
+ 
+
+<% if (isLoggedIn) { %>
+
+  <%- include('./../partials/BootNav_2.ejs') %>
+
+<% } else{ %>
+
+  <%- include('./../partials/BootNav.ejs') %>
+
+  <% } %>
+
+ 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<style>
+
+    body{
+
+        margin-top: 100px;
+
+    }
+
+</style>
+
+<body>
+
+    <div class="container mt-5">
+
+        <div class="alert alert-warning">
+
+            <strong>Oops!</strong> You didn't post any products.
+
+            <a href="/sellProduct">Click here to Post Your Ad</a>
+
+        </div>
+
+    </div>
+
+ 
+
+    <!-- Include Bootstrap JS (optional) -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+
+<%- include('./../partials/footer.ejs') %>
+    
+

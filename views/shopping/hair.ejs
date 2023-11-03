@@ -1,0 +1,72 @@
+<%- include('./../partials/header.ejs') %>
+<% if (isLoggedIn) { %>
+    <%- include('./../partials/BootNav_2.ejs') %>
+<% } else{ %>
+    <%- include('./../partials/BootNav.ejs') %>
+    <% } %>
+ 
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+ 
+<div class="row">
+  
+<% hair.forEach(product => { %>
+
+    <div class="Mworld">
+
+      <img src="<%= product.img_url %>" alt="<%= product.product_name %> Image">
+
+      <div class="inside">
+
+
+ 
+
+        <h2>
+
+          <a href="./../viewProduct?p_id=<%= product._id %>" >
+
+            <%= product.product_name %>
+
+          </a>
+
+        </h2>
+        <br>
+
+        <p><%= product.description %></p>
+
+        <span class="price">₹ <%= product.price %></span>
+
+        <br>
+           
+        <% if (isAdmin) { %>
+
+          <a href="./../admin/editProduct?p_id=<%= product._id %>" class="edit-button">
+
+            <i class="fa fa-pencil" ></i>Edit Product
+
+        </a>
+
+        &nbsp;
+
+        <a href="/deleteProduct?p_id=<%= product._id %>" data-product-id="<%= product._id %>" class="remove-button">Remove Product</a>
+
+        <% } %>
+
+        <br>
+
+        <br>
+
+      </div>
+
+  </div>
+
+  <% }); %>
+
+</div> 
+
+ 
+
+<%- include('./../partials/footer.ejs') %>
+
+ 
